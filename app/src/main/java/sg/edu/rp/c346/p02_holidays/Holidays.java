@@ -5,10 +5,13 @@ public class Holidays {
     private String date;
     private boolean image;
 
-    public Holidays(String name, String date, boolean image){
+    private String type;
+
+    public Holidays(String name, String date, boolean image, String type){
         this.name = name;
         this.date = date;
         this. image = image;
+        this.type = type;
     }
 
     public String getName() {
@@ -21,5 +24,13 @@ public class Holidays {
 
     public boolean isImage(){
         return image;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

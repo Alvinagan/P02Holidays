@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         final ArrayList<String> alSel = new ArrayList<>();
         alSel.add("Secular");
+        alSel.add("Ethics & Religion");
 
         ArrayAdapter<String> aa;
         aa = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, alSel);

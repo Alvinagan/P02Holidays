@@ -12,41 +12,56 @@ import java.util.ArrayList;
 
 public class HolidaysAdapter extends ArrayAdapter<Holidays> {
 
-        private ArrayList<Holidays> holidays;
-        private Context context;
-        private TextView tvName;
-        private ImageView ivLogo;
-        private TextView tvDate;
+    private ArrayList<Holidays> holidays;
+    private Context context;
+    private TextView tvName;
+    private ImageView ivLogo;
+    private TextView tvDate;
 
-        public HolidaysAdapter(Context context, int resource, ArrayList<Holidays> objects){
-            super(context, resource, objects);
-            holidays = objects;
-            this.context = context;
-        }
-
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-
-            LayoutInflater inflater = (LayoutInflater) context
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View rowView = inflater.inflate(R.layout.row, parent, false);
+    public HolidaysAdapter(Context context, int resource, ArrayList<Holidays> objects) {
+        super(context, resource, objects);
+        holidays = objects;
+        this.context = context;
+    }
 
 
-            tvName = rowView.findViewById(R.id.textView2);
-            tvDate = rowView.findViewById(R.id.textView3);
-            ivLogo = rowView.findViewById(R.id.imageView);
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
 
-            Holidays currentFood = holidays.get(position);
+        LayoutInflater inflater = (LayoutInflater) context
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View rowView = inflater.inflate(R.layout.row, parent, false);
 
-            tvName.setText(currentFood.getName());
-            tvDate.setText(currentFood.getDate());
-            if(currentFood.isImage()) {
+
+        tvName = rowView.findViewById(R.id.textView2);
+        tvDate = rowView.findViewById(R.id.textView3);
+        ivLogo = rowView.findViewById(R.id.imageView);
+
+        Holidays currentFood = holidays.get(position);
+
+        tvName.setText(currentFood.getName());
+        tvDate.setText(currentFood.getDate());
+
+        if(currentFood.getType().equals("Secular")) {
+            if (currentFood.isImage()) {
                 ivLogo.setImageResource(R.drawable.new_year);
-            }
-            else {
+            } else {
                 ivLogo.setImageResource(R.drawable.labour_day);
             }
-            return rowView;
         }
+
+
+        else{
+            if (currentFood.isImage()) {
+                ivLogo.setImageResource(R.drawable.cny);
+            } else {
+                ivLogo.setImageResource(R.drawable.good_friday);
+            }
+        }
+        // Return the nicely done up View to the ListView
+        return rowView;
+    }
 }
+
+
+

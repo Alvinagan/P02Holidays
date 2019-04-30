@@ -32,16 +32,23 @@ public class SecondActivity extends AppCompatActivity {
 
         holiday = new ArrayList<Holidays>();
 
-        holiday.add(new Holidays("New Year's Day", "1 Jan 2017", true));
-        holiday.add(new Holidays("Labour Day", "1 May 2017", false));
+        Intent i = getIntent();
+        String name = i.getStringExtra("sel");
+        tvName.setText(name);
+
+        if (name.equals("Secular")){
+            holiday.add(new Holidays("New Year's Day", "1 Jan 2017", true, "Secular"));
+            holiday.add(new Holidays("Labour Day", "1 May 2017", false, "Secular"));
+        } else {
+            holiday.add(new Holidays("Chinese New Year", "28-29 Jan 2017", true, "Ethnic"));
+            holiday.add(new Holidays("Good Friday", "14 April 2017", false, "Ethnic"));
+        }
+
 
 
         aa = new HolidaysAdapter(this, R.layout.row, holiday);
         lv.setAdapter(aa);
 
-        Intent i = getIntent();
-        String name = i.getStringExtra("sel");
-        tvName.setText(name);
 
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
