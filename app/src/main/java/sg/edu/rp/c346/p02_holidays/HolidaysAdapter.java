@@ -42,10 +42,10 @@ public class HolidaysAdapter extends ArrayAdapter<Holidays> {
             tvName.setText(currentFood.getName());
             tvDate.setText(currentFood.getDate());
             if(currentFood.isImage()) {
-                ivLogo.setImageResource(R.drawable.cny);
+                ivLogo.setImageResource(R.drawable.new_year);
             }
             else {
-                ivLogo.setImageResource(R.drawable.christmas);
+                ivLogo.setImageResource(R.drawable.labour_day);
             }
             return rowView;
         }
